@@ -113,6 +113,12 @@ params:
 
   share:
     disabled: false
+    destinations:
+      - reddit
+      - x
+      - facebook
+      - google
+      - telegram
     disableByType:
       - not-exist
 

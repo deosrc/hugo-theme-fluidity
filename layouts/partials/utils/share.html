@@ -8,41 +8,51 @@
     {{- with .Params.Tags -}}
       {{- $tag_list = delimit . "," -}}
     {{- end -}}
-    {{- partial "inline/share/item.html"
-      (dict 
-        "Name" "Reddit" 
-        "Icon" "reddit"
-        "Title" .Title 
-        "URL" "https://reddit.com/submit?url={{- .Permalink | relURL -}}&title={{- .Title -}}")
-    -}}
-    {{- partial "inline/share/item.html"
-      (dict 
-        "Name" "X.com" 
-        "Icon" "twitter"
-        "Title" .Title 
-        "URL" "https://x.com/intent/tweet/?text={{- .Title -}}&amp;url={{- .Permalink | relURL -}}&amp;hashtags={{- $tag_list }}")
-    -}}
-    {{- partial "inline/share/item.html"
-      (dict 
-        "Name" "Facebook" 
-        "Icon" "facebook"
-        "Title" .Title 
-        "URL" "https://facebook.com/sharer/sharer.php?u={{- .Permalink | relURL -}}")
-    -}}
-    {{- partial "inline/share/item.html"
-      (dict 
-        "Name" "Google" 
-        "Icon" "google"
-        "Title" .Title 
-        "URL" "https://www.google.com/bookmarks/mark?op=edit&bkmk={{- .Permalink | relURL -}}&title={{- .Title -}}")
-    -}}
-    {{- partial "inline/share/item.html"
-      (dict 
-        "Name" "Telegram" 
-        "Icon" "telegram"
-        "Title" .Title 
-        "URL" "https://telegram.me/share/url?url={{- .Permalink | relURL -}}&text={{- .Title -}}")
-    -}}
+    {{- if in .Site.Params.share.destinations "reddit" -}}
+      {{- partial "inline/share/item.html"
+        (dict
+          "Name" "Reddit"
+          "Icon" "reddit"
+          "Title" .Title
+          "URL" "https://reddit.com/submit?url={{- .Permalink | relURL -}}&title={{- .Title -}}")
+      -}}
+    {{- end -}}
+    {{- if in .Site.Params.share.destinations "x" -}}
+      {{- partial "inline/share/item.html"
+        (dict
+          "Name" "X.com"
+          "Icon" "twitter"
+          "Title" .Title
+          "URL" "https://x.com/intent/tweet/?text={{- .Title -}}&amp;url={{- .Permalink | relURL -}}&amp;hashtags={{- $tag_list }}")
+      -}}
+    {{- end -}}
+    {{- if in .Site.Params.share.destinations "facebook" -}}
+      {{- partial "inline/share/item.html"
+        (dict
+          "Name" "Facebook"
+          "Icon" "facebook"
+          "Title" .Title
+          "URL" "https://facebook.com/sharer/sharer.php?u={{- .Permalink | relURL -}}")
+      -}}
+    {{- end -}}
+    {{- if in .Site.Params.share.destinations "google" -}}
+      {{- partial "inline/share/item.html"
+        (dict
+          "Name" "Google"
+          "Icon" "google"
+          "Title" .Title
+          "URL" "https://www.google.com/bookmarks/mark?op=edit&bkmk={{- .Permalink | relURL -}}&title={{- .Title -}}")
+      -}}
+    {{- end -}}
+    {{- if in .Site.Params.share.destinations "telegram" -}}
+      {{- partial "inline/share/item.html"
+        (dict
+          "Name" "Telegram"
+          "Icon" "telegram"
+          "Title" .Title
+          "URL" "https://telegram.me/share/url?url={{- .Permalink | relURL -}}&text={{- .Title -}}")
+      -}}
+    {{- end -}}
   </div>
 </div>
 
