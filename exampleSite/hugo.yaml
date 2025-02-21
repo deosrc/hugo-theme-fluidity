@@ -106,12 +106,15 @@ params:
     twitter: 'Your Twitter username'
     github: 'Your GitHub username'
     linkedin: 'Your LinkedIn username'
-    disableShareByType:
-      - not-exist
 
   # Table of contents
   toc:
     disabled: false
+
+  share:
+    disabled: false
+    disableByType:
+      - not-exist
 
   relatedPosts:
     disabled: false
